@@ -1,0 +1,7 @@
+# Ignore everything except certain files and folders
+*
+!tmux/
+!tmux/*
+!nvim/
+!nvim/*
+!.zshrc
