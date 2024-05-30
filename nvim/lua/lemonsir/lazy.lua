@@ -13,36 +13,5 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- init lazy
-require("lazy").setup({
-  -- plugins
-  -- telescope
-  { "nvim-telescope/telescope.nvim", dependencies = {"nvim-lua/plenary.nvim" }, },
-  
-  -- treesitter
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate", },
+require("lazy").setup("lemonsir.lazy-plugins")
 
-  -- treesitter context
-  "nvim-treesitter/nvim-treesitter-context",
-
-  -- harpoon
-  "theprimeagen/harpoon",
-  
-  -- undotree
-  
-
-  -- lsp
-  
-
-  -- rose-pine theme
-  {
-    'rose-pine/neovim',
-    name = 'rose-pine',
-    config = function()
-      -- load the color scheme
-      vim.cmd([[colorscheme rose-pine]])
-    end,
-  }
-  }, {
-  -- options
-
-  })
