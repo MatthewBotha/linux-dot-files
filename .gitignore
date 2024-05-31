@@ -4,4 +4,7 @@
 !tmux/**
 !nvim/
 !nvim/**
+!kitty/
+!kitty/**
+!.bashrc
 !.zshrc
