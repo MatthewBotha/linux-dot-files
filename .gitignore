@@ -1,11 +1,11 @@
 # Ignore everything except certain files and folders
 *
-!tmux/
-!tmux/**
+!nix/
+!nix/**
 !nvim/
 !nvim/**
-!kitty/
-!kitty/**
+!tmux/
+!tmux/**
 !wezterm/
 !wezterm/**
 !.bashrc
