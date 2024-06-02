@@ -34,6 +34,12 @@
                 # fonts
                 ./fonts.nix
 
+                # environment
+                ./environment/default.nix
+
+                # programming languages
+                ./languages/default.nix
+
                 # make home-manager as a module of nixos so
                 # that home-manager config will be deployed
                 # automatically

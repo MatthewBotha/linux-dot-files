@@ -90,44 +90,16 @@
     ];
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # Settings
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Fonts
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = ["FiraCode"]; })
-    (google-fonts.override { fonts = ["DMMono"]; })
-  ];
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # Flakes dependencies
-    git
-    wget
-    curl
-
-    # Tools
-    fzf
-    gcc
-    gh
-    ripgrep
-    tmux
-    #kitty
-    wezterm
   ];
-
-  # Set the default editor to neovim
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
