@@ -1,10 +1,10 @@
 { pkgs, ... }: {
-    environment = {
-        systemPackages = with pkgs; [
-            zsh
-            tmux
-        ];
+    environment.shells = with pkgs; [ zsh ];
+
+    programs.tmux = {
+        enable = true;
     };
+
     programs.zsh = {
         enable = true;
         enableCompletion = true;
@@ -25,5 +25,8 @@
             ];
         };
     };
+
+    # set as default shell
+    users.defaultUserShell = pkgs.zsh;
 }
 
