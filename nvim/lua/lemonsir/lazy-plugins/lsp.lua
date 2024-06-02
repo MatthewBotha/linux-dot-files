@@ -33,7 +33,7 @@ return {
                 "bashls",
                 "tsserver", -- for JS as well
                 "nil_ls", -- nix
-                "ruby_lsp",
+                -- "ruby_lsp",
                 "sqlls" -- sql
             },
             handlers = {
@@ -71,10 +71,14 @@ return {
             mapping = cmp.mapping.preset.insert({
                 ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
                 ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-                ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+                
+                ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+                ["<CR>"] = cmp.mapping.confirm({ select = false }),
+                -- ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+                
                 ["<C-Space>"] = cmp.mapping.complete(),
             }),
-            source = cmp.config.source({
+            sources = cmp.config.sources({
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
             }, {
