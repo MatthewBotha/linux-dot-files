@@ -1,5 +1,7 @@
 # Ignore everything except certain files and folders
 *
+!backgrounds/
+!backgrounds/**
 !nix/
 !nix/**
 !nvim/
