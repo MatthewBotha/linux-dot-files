@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, ... }: {
     home.username = "lemonsir";
     home.homeDirectory = "/home/lemonsir";
 
@@ -12,11 +12,6 @@
         enable = true;
         userName = "MatthewBotha";
         userEmail = "m.botha41@gmail.com";
-    };
-
-    # tpm
-    home.file = {
-        ".tmux/plugins/tpm".source = inputs.tpm;
     };
 
     # State version

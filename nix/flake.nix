@@ -14,12 +14,6 @@
             # to avoid problems caused by different versions of nixpkgs.
             inputs.nixpkgs.follows = "nixpkgs";
         };
-
-        # tpm 
-        tpm = {
-            url = "github:tmux-plugins/tpm";
-            flake = false;
-        };
 	};
 
 	outputs = inputs@{ nixpkgs, home-manager, ...}: {
