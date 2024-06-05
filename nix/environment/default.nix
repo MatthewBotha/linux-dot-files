@@ -21,6 +21,15 @@
             gcc
             #kitty
             wezterm
+
+# work stuff
+# slack
+# teams
+# dbeaver
+# postman
+# chrome?
+# -- zscaler and citrix
+
         ];
     };
     

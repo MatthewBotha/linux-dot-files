@@ -12,12 +12,13 @@ return {
                 dim_inative_windows = true,
                 extend_background_behind_borders = true,
                 highlight_groups = {
-                    TelescopeBorder = { fg = 'highlight_high', bg = 'none' },
+                    TelescopeBorder = { fg = 'highlight_high', bg = '' },
                     TelescopeNormal = { bg = 'none' },
                     TelescopePromptNormal = { bg = 'none' },
                     TelescopeResultsNormal = { fg = 'subtle', bg = 'none' },
                     TelescopeSelection = { fg = 'text', bg = 'none' },
-                    TelescopeSelectionCaret = { fg = 'rose', bg = 'rose' },
+                    TelescopeSelectionCaret = { fg = 'rose', bg = 'none' },
+                    NormalNC = { fg = 'subtle', bg = 'none' },
                 }
             })
             vim.cmd('colorscheme rose-pine-moon')
@@ -26,7 +27,7 @@ return {
             vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
             vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
         end,
-    },
+    }, --[[
     {
         'maxmx03/roseline',
         dependencies = {
@@ -72,5 +73,5 @@ return {
                 },
             })
         end,
-    }
+    } ]]
 }

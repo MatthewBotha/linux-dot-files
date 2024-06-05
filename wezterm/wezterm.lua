@@ -33,7 +33,7 @@ config.background = {
     }
 }
 
--- inavtive panes
+-- inactive panes
 config.inactive_pane_hsb = {
     saturation = 0.7,
     brightness = 0.4,
@@ -42,6 +42,7 @@ config.inactive_pane_hsb = {
 -- fonts
 config.font = wezterm.font 'DM Mono'
 config.font_size = 11.0
+config.warn_about_missing_glyphs = false
 
 -- title bar
 config.window_decorations = 'NONE'
@@ -85,6 +86,45 @@ config.keys = {
         mods = 'LEADER',
         key = 'z',
         action = act.TogglePaneZoomState,
+    },
+
+    -- resize active pane
+    {
+        key = 'UpArrow',
+        mods = 'SHIFT|ALT',
+        action = act.AdjustPaneSize { 'Up', 5 },
+    },
+    {
+        key = 'DownArrow',
+        mods = 'SHIFT|ALT',
+        action = act.AdjustPaneSize { 'Down', 5 },
+    },
+    {
+        key = 'LeftArrow',
+        mods = 'SHIFT|ALT',
+        action = act.AdjustPaneSize { 'Left', 5 },
+    },
+    {
+        key = 'RightArrow',
+        mods = 'SHIFT|ALT',
+        action = act.AdjustPaneSize { 'Right', 5 },
+    },
+
+    -- rename tab
+    {
+        key = ',',
+        mods = 'LEADER',
+        action = act.PromptInputLine {
+            description = 'Enter new name for tab',
+            action = wezterm.action_callback(function(window, pane, line)
+                -- line will be `nil` if they hit escape without entering anything
+                -- An empty string if they just hit enter
+                -- Or the actual line of text they wrote
+                if line then
+                    window:active_tab():set_title(line)
+                end
+            end),
+        },
     },
 }
 

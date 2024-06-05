@@ -6,6 +6,8 @@
 !nix/**
 !nvim/
 !nvim/**
+!scripts/
+!scripts/**
 !tmux/
 !tmux/**
 !wezterm/
