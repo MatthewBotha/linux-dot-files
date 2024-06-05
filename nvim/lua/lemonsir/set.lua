@@ -10,7 +10,7 @@ vim.opt.expandtab = true
 vim.opt.smartindent = true
 
 -- long undo tree
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = os.getenv('HOME') .. '/.vim/undodir'
 
 -- search highlighting
 vim.opt.hlsearch = false
@@ -21,14 +21,14 @@ vim.opt.termguicolors = true
 
 -- scroll padding
 vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
-vim.opt.isfname:append("@-@")
+vim.opt.signcolumn = 'yes'
+vim.opt.isfname:append('@-@')
 
 -- fast update
 vim.opt.updatetime = 50
 
 -- color column 80
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = '80'
 
 -- vim leader mapping
-vim.g.mapleader = " "
+vim.g.mapleader = ' '
