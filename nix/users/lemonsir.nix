@@ -6,17 +6,17 @@
 
     # user specific packages
     home.packages = with pkgs; [
-        zsh
+        fd
     ];
     
     # zsh config
     programs.zsh = {
         enable = true;
-        # dotDir = ".config/zsh";
-        localVariables = {
-            XDG_CONFIG_HOME = "/home/lemonsir/.config";
-            FLAKE_CONFIG_DIR = "$XDG_CONFIG_HOME/nix";
-        };
+        initExtraFirst = ''
+            # relative variables do not work in localVariables
+            export XDG_CONFIG_HOME="''$HOME/.config"
+            export FLAKE_CONFIG_DIR="''$XDG_CONFIG_HOME/nix"
+        '';
         initExtra = ''
             # scripts
             for script in ~/.config/scripts/*.sh; do
