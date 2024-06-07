@@ -12,5 +12,5 @@
 !tmux/**
 !wezterm/
 !wezterm/**
-!.bashrc
-!.zshrc
+!zsh/
+!zsh/**

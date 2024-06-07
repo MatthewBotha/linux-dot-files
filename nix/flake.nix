@@ -42,7 +42,10 @@
                     home-manager.useUserPackages = true;
 
                     # import home configs
-                    home-manager.users.lemonsir = import ./home.nix;
+                    home-manager.users = {
+                        lemonsir = import ./users/lemonsir.nix;
+                        # work = import ./work.nix;
+                    };
                     home-manager.extraSpecialArgs = { inherit inputs; };
                 }
 			];

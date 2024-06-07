@@ -82,12 +82,15 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.lemonsir = {
-    isNormalUser = true;
-    description = "Matt";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
+      isNormalUser = true;
+      description = "Matt";
+      extraGroups = [ "networkmanager" "wheel" ];
+  };
+  users.extraUsers.work = {
+      isNormalUser = true;
+      description = "Work";
+      extraGroups = [ "networkmanager" "wheel" ];
+      createHome = true;
   };
 
   # Allow unfree packages
