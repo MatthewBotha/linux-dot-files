@@ -16,7 +16,7 @@
   boot.loader.grub.useOSProber = true;
   boot.initrd.checkJournalingFS = false;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "virtualbox"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -98,6 +98,7 @@
 
   # Settings
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  virtualisation.virtualbox.guest.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

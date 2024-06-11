@@ -18,12 +18,12 @@
 
 	outputs = inputs@{ nixpkgs, home-manager, ...}: {
 		# nixosConfigurations.<hostname>
-		nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+		nixosConfigurations.virtualbox = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			modules = [
 				# Import the previous configuration.nix we used,
 				# so the old configuration file still takes effect
-				/etc/nixos/configuration.nix
+				./configuration.nix
                 
                 # fonts
                 ./fonts.nix
