@@ -18,7 +18,7 @@
 
 	outputs = inputs@{ nixpkgs, home-manager, ...}: {
 		# nixosConfigurations.<hostname>
-		nixosConfigurations.virtualbox = nixpkgs.lib.nixosSystem {
+		nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			modules = [
 				# Import the previous configuration.nix we used,
