@@ -37,7 +37,7 @@ return {
     config = function()
         -- register extensions
         vim.treesitter.language.register('bash', {'config'})
-        vim.treesitter.language.register('apex', {'cls'})
+        vim.treesitter.language.register('apex', 'cls')
     end,
 }
 
