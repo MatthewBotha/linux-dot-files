@@ -4,6 +4,8 @@
 !backgrounds/**
 !nix/
 !nix/**
+!nixpkgs/
+!nixpkgs/**
 !nvim/
 !nvim/**
 !scripts/

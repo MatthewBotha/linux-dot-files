@@ -7,8 +7,17 @@
     # user specific packages
     home.packages = with pkgs; [
         fd
+        
+        # work
+        slack
+        postman
+        bruno # postman does not work
+        docker
+        zoom-us
+        dbeaver # will be dbeaver-bin in 24.05+
     ];
-    
+
+
     # zsh config
     programs.zsh = {
         enable = true;
