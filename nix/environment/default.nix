@@ -9,19 +9,30 @@
             git
             gh
             
+            # programs
+            firefox
+
             # utils
-            wget
             curl
             fzf
+            ripgrep
+            wget
             zip
             unzip
-            ripgrep
             
             # tools
             gcc
             #kitty
             wezterm
 
+            # work
+            dbeaver # will be dbeaver-bin in 24.05+
+            docker
+            # postman
+            bruno # postman does not work
+            slack
+            # teams # has been removed as it is no longer supported 
+            zoom-us
 # work stuff
 # slack
 # teams

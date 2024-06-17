@@ -11,11 +11,10 @@
     ];
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
-  boot.initrd.checkJournalingFS = false;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.initrd.luks.devices."luks-bc08fde3-497e-46b0-91b9-00cfcffabda1".device = "/dev/disk/by-uuid/bc08fde3-497e-46b0-91b9-00cfcffabda1";
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -32,18 +31,6 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_ZA.UTF-8";
-    LC_IDENTIFICATION = "en_ZA.UTF-8";
-    LC_MEASUREMENT = "en_ZA.UTF-8";
-    LC_MONETARY = "en_ZA.UTF-8";
-    LC_NAME = "en_ZA.UTF-8";
-    LC_NUMERIC = "en_ZA.UTF-8";
-    LC_PAPER = "en_ZA.UTF-8";
-    LC_TELEPHONE = "en_ZA.UTF-8";
-    LC_TIME = "en_ZA.UTF-8";
-  };
-
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -51,17 +38,32 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  # i3 tiling window manager
+  # services.xserver = {
+  #   enable = true;
+  #   desktopManager = {
+  #       xterm.enable = true;
+  #       xfce = {
+  #           enable = true;
+  #           noDesktop = true;
+  #           enableXfwm = false;
+  #       };
+  #   };
+  #   displayManager.defaultSession = "xfce";
+  #   windowManager.i3.enable = true;
+  # };
+
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+      layout = "us";
+      xkbVariant = "";
   };
 
+  
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -82,27 +84,30 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.lemonsir = {
-      isNormalUser = true;
-      description = "Matt";
-      extraGroups = [ "networkmanager" "wheel" ];
+    isNormalUser = true;
+    description = "lemonsir";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [
+    #  thunderbird
+    ];
   };
-  users.extraUsers.work = {
-      isNormalUser = true;
-      description = "Work";
-      extraGroups = [ "networkmanager" "wheel" ];
-      createHome = true;
-  };
+
+  # Install firefox.
+  programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # Settings
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  virtualisation.virtualbox.guest.enable = true;
-
+  
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    gh
+    git
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -130,6 +135,6 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.11"; # Did you read the comment?
+  system.stateVersion = "24.05"; # Did you read the comment?
 
 }
