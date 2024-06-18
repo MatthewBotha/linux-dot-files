@@ -1,0 +1,1 @@
+sudo ./zscaler.run --mode unattended --unattendedmodeui minimal --cloudName zscalertwo --userDomain mit.edu --hideAppUIOnLaunch 1 --policyToken 343835333A333A35346566383137332D633930362D343531302D623963372D353231613636333835363138

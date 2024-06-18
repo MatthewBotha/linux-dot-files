@@ -1,12 +1,20 @@
-{ pkgs, ... }: {
+{ pkgs, ... }: 
+let
+    extraNodePackages = import ../packages/node/default.nix {};
+    extraPackages = import ../packages/zscaler/default.nix {};
+in
+{
     home.username = "lemonsir";
     home.homeDirectory = "/home/lemonsir";
     
     # imports = [ ./common.nix ];
 
     # user specific packages
-    home.packages = with pkgs; [
-        fd
+    home.packages = [
+        pkgs.fd
+
+        extraNodePackages."@salesforce/cli"
+        extraPackages.Zscaler
     ];
 
     # zsh config
@@ -16,6 +24,7 @@
             # relative variables do not work in localVariables
             export XDG_CONFIG_HOME="''$HOME/.config"
             export FLAKE_CONFIG_DIR="''$XDG_CONFIG_HOME/nix"
+            export PATH="''$HOME/cli/sf/bin:''$PATH"
         '';
         initExtra = ''
             # scripts

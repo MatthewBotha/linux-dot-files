@@ -1,6 +1,6 @@
 { ... }: {
-    imports =[
-        ./salesforce-cli.nix
+    imports = [
+        # ./salesforce-cli/default.nix
     ];
 }
 

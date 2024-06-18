@@ -12,10 +12,10 @@ function rebuild-nix() {
     else
         # update flake.lock
         echo -e "${GREEN}Updating flake.lock...${NC}"
-        nix flake update "$FLAKE_CONFIG_DIR"
+        nix flake update "$FLAKE_CONFIG_DIR" --impure
 
         # apply the updates
         echo -e "${GREEN}Rebuilding NixOS...${NC}"
-        sudo nixos-rebuild switch --flake "$FLAKE_CONFIG_DIR"
+        sudo nixos-rebuild switch --flake "$FLAKE_CONFIG_DIR" --impure
     fi
 }

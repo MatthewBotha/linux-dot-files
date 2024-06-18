@@ -85,8 +85,8 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.lemonsir = {
     isNormalUser = true;
-    description = "lemonsir";
-    extraGroups = [ "networkmanager" "wheel" ];
+    description = "Matthew";
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
     #  thunderbird
     ];

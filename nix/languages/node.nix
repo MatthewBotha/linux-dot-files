@@ -5,6 +5,10 @@
 
             # typescript
             nodePackages.typescript
+
+            # salesforce
+            node2nix
+            # nodePackages."@salesforce/cli"
         ];
     };
 

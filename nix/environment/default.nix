@@ -19,7 +19,15 @@
             wget
             zip
             unzip
-            
+
+            # zscaler utils
+            patchelf
+            binutils
+            stdenv
+            dpkg
+            nix-index
+            stdenv.cc
+
             # tools
             gcc
             #kitty
@@ -28,6 +36,7 @@
             # work
             dbeaver # will be dbeaver-bin in 24.05+
             docker
+            globalprotect-openconnect
             # postman
             bruno # postman does not work
             slack
@@ -43,6 +52,8 @@
 
         ];
     };
+    
+    virtualisation.docker.enable = true;
     
     # Set the default editor to neovim
     programs.neovim = {
