@@ -6,6 +6,7 @@
 !nix/**
 !nixpkgs/
 !nixpkgs/**
+!nvim/
 !nvim/**
 !scripts/
 !scripts/**

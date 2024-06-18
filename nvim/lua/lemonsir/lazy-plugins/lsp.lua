@@ -42,7 +42,15 @@ return {
                         capabilities = capabilities
                     }
                 end,
-
+                
+                ['apex_ls'] = function()
+                    local lspconfig = require('lspconfig')
+                    lspconfig.apex_ls.setup {
+                        capabilities = capabilities,
+                        filetypes = { 'apexcode', 'apex', 'cls' },
+                    }
+                end,
+                
                 ['lua_ls'] = function()
                     local lspconfig = require('lspconfig')
                     lspconfig.lua_ls.setup {
