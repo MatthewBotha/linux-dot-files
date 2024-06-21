@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+echo "Setting things up..."
 # update first
 sudo apt update
 
@@ -16,6 +17,7 @@ sudo apt install "${CORE[@]}" -y
 
 # add repos to apt
 
+echo "\nAdding GPG keys etc."
 ## docker - https://docs.docker.com/engine/install/ubuntu/
 if ! command -v docker &> /dev/null; then
     sudo install -m 0755 -d /etc/apt/keyrings
@@ -49,6 +51,7 @@ fi
 # update apt
 sudo apt update
 
+echo "\nInstalling packages..."
 # install packages
 PACKAGES=(
     # development tools
@@ -80,7 +83,8 @@ PACKAGES=(
 )
 sudo apt install "${PACKAGES[@]}" -y
 
-# Git Credential Manager
+echo "\nMore manual installations..."
+hc # Git Credential Manager
 if ! command -v git-credential-manager &> /dev/null; then
     curl -L https://aka.ms/gcm/linux-install-source.sh | sh
     git-credential-manager configure
