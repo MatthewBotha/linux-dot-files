@@ -12,7 +12,7 @@ CORE=(
     default-jre
     default-jdk
 )
-sudo apt install "${CORE[@]}"
+sudo apt install "${CORE[@]}" -y
 
 # add repos to apt
 
@@ -69,7 +69,7 @@ PACKAGES=(
     slack
     virtualbox
 )
-sudo apt install "${PACKAGES[@]}"
+sudo apt install "${PACKAGES[@]}" -y
 
 # oh-my-zsh - https://ohmyz.sh/#install
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
