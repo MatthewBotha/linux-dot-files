@@ -37,7 +37,16 @@ return {
     config = function()
         -- register extensions
         vim.treesitter.language.register('bash', {'config'})
-        vim.treesitter.language.register('apex', 'cls')
+        vim.filetype = on
+        vim.filetype.add({
+            extension = {
+                cls = 'apex',
+                apex = 'apex',
+                trigger = 'apex',
+                soql = 'soql',
+                sosl = 'sosl',
+            }
+        })
     end,
 }
 

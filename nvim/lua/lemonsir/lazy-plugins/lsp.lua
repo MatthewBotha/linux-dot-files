@@ -31,8 +31,9 @@ return {
                 'rust_analyzer',
                 'apex_ls',
                 'bashls',
+                'java_language_server',
                 'tsserver', -- for JS as well
-                'nil_ls', -- nix
+                -- 'nil_ls', -- nix
                 -- 'ruby_lsp',
                 'sqlls' -- sql
             },
@@ -42,15 +43,21 @@ return {
                         capabilities = capabilities
                     }
                 end,
-                
+
                 ['apex_ls'] = function()
                     local lspconfig = require('lspconfig')
+                    vim.lsp.set_log_level('debug')
                     lspconfig.apex_ls.setup {
                         capabilities = capabilities,
-                        filetypes = { 'apexcode', 'apex', 'cls' },
+
+                        apex_jar_path = '/home/lemonsir/.config/nvim/resources/apex-jorje-lsp.jar',
+                        apex_enable_semantic_errors = false,
+                        apex_enable_completion_statistics = false,
+
+                        filetypes = { 'apexcode', 'apex' },
                     }
                 end,
-                
+
                 ['lua_ls'] = function()
                     local lspconfig = require('lspconfig')
                     lspconfig.lua_ls.setup {
@@ -79,11 +86,11 @@ return {
             mapping = cmp.mapping.preset.insert({
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                
+
                 ['<Tab>'] = cmp.mapping.confirm({ select = true }),
                 ['<CR>'] = cmp.mapping.confirm({ select = false }),
                 -- ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-                
+
                 ['<C-Space>'] = cmp.mapping.complete(),
             }),
             sources = cmp.config.sources({
