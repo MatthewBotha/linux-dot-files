@@ -1,20 +1,5 @@
 #!/usr/bin/bash
 
-# tools
-gcc
-#kitty
-wezterm
-
-# work
-dbeaver # will be dbeaver-bin in 24.05+
-docker
-globalprotect-openconnect
-# postman
-bruno # postman does not work
-slack
-# teams # has been removed as it is no longer supported 
-zoom-us
-
 # update first
 sudo apt update
 
