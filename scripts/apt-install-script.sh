@@ -81,7 +81,7 @@ PACKAGES=(
     slack
     virtualbox
 )
-sudo apt install "${PACKAGES[@]}" -y
+sudo apt install "${PACKAGES[@]}" -y --ignore-missing
 
 echo "\nMore manual installations..."
 hc # Git Credential Manager
