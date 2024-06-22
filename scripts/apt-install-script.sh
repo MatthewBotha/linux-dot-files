@@ -17,7 +17,7 @@ sudo apt install "${CORE[@]}" -y
 
 # add repos to apt
 
-echo "\nAdding GPG keys etc."
+echo "\rAdding GPG keys etc."
 ## docker - https://docs.docker.com/engine/install/ubuntu/
 if ! command -v docker &> /dev/null; then
     sudo install -m 0755 -d /etc/apt/keyrings
@@ -51,7 +51,7 @@ fi
 # update apt
 sudo apt update
 
-echo "\nInstalling packages..."
+echo "\rInstalling packages..."
 # install packages
 PACKAGES=(
     # development tools
@@ -83,7 +83,7 @@ PACKAGES=(
 )
 sudo apt install "${PACKAGES[@]}" -y --ignore-missing
 
-echo "\nMore manual installations..."
+echo "\rMore manual installations..."
 hc # Git Credential Manager
 if ! command -v git-credential-manager &> /dev/null; then
     curl -L https://aka.ms/gcm/linux-install-source.sh | sh
