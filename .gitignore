@@ -2,6 +2,8 @@
 *
 !backgrounds/
 !backgrounds/**
+!lazygit/
+!lazygit/**
 !nix/
 !nix/**
 !nixpkgs/
