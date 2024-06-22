@@ -35,7 +35,8 @@ return {
                 'tsserver', -- for JS as well
                 -- 'nil_ls', -- nix
                 -- 'ruby_lsp',
-                'sqlls' -- sql
+                'sqlls', -- sql
+                'yamlls',
             },
             handlers = {
                 function(server_name) -- default handler (optional)

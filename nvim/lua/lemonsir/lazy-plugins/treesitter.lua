@@ -15,7 +15,7 @@ return {
     cmd = { 'TSUpdateSync', 'TSUpdate', 'TSInstall', },
     opts = {
         -- A list of parser names, or 'all' (the five listed parsers should always be installed)
-        ensure_installed = { 'bash', 'javascript', 'typescript', 'apex', 'c', 'lua', 'vim', 'vimdoc', 'query', 'nix' },
+        ensure_installed = { 'bash', 'javascript', 'typescript', 'apex', 'c', 'lua', 'vim', 'vimdoc', 'query', 'yaml' },
 
         -- Install parsers synchronously (only applied to `ensure_installed`)
         sync_install = false,
