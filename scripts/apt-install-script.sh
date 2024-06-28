@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+lemonsir-install-apps () {
 echo "Setting things up..."
 # update first
 sudo apt update
@@ -69,8 +70,8 @@ PACKAGES=(
     # utils
     # personal
     # work
-    bruno # postman alternative
-    dbeaver-ce
+    # bruno # postman alternative
+    # dbeaver-ce
     # -- start docker
     docker-ce
     docker-ce-cli
@@ -80,6 +81,7 @@ PACKAGES=(
     # -- end docker
     slack
     virtualbox
+    wezterm
 )
 sudo apt install "${PACKAGES[@]}" -y --ignore-missing
 
@@ -103,4 +105,4 @@ fi
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
-
+}
