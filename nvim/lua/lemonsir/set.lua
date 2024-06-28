@@ -32,3 +32,6 @@ vim.opt.colorcolumn = '80'
 
 -- vim leader mapping
 vim.g.mapleader = ' '
+
+-- clipboard
+vim.opt.clipboard = 'unnamedplus'
