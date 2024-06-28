@@ -1,0 +1,1 @@
+/home/lemonsir/git-repos/docker-salesforce/resources/scripts/jira-from-pr.sh
