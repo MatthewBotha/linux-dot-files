@@ -44,12 +44,17 @@ config.font = wezterm.font 'DM Mono'
 config.font_size = 11.0
 config.warn_about_missing_glyphs = false
 
+-- char_select options
+config.char_select_font_size = 11.0
+config.char_select_bg_color = "#1f1d2e"
+config.char_select_fg_color = "#e0def4"
+
 -- title bar
 config.window_decorations = 'NONE'
 
 -- tab bar
 -- config.enable_tab_bar = false
-config.use_fancy_tab_bar = false 
+config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 
 -- padding
@@ -80,7 +85,7 @@ config.keys = {
         key = '\\',
         action = act.SplitHorizontal { domain = 'CurrentPaneDomain' },
     },
-    
+
     -- maximize pane
     {
         mods = 'LEADER',
@@ -110,6 +115,18 @@ config.keys = {
         action = act.AdjustPaneSize { 'Right', 5 },
     },
 
+    -- new tab
+    {
+        key = 'c',
+        mods = 'LEADER',
+        action = act.SpawnTab 'CurrentPaneDomain',
+    },
+    {
+        key = 'd',
+        mods = 'LEADER',
+        action = act.SpawnCommandInNewTab { cwd = wezterm.home_dir },
+    },
+
     -- rename tab
     {
         key = ',',
@@ -124,6 +141,16 @@ config.keys = {
                     window:active_tab():set_title(line)
                 end
             end),
+        },
+    },
+
+    -- unicode selector
+    {
+        key = '.',
+        mods = 'CTRL',
+        action = act.CharSelect {
+            copy_on_select = true,
+            copy_to = 'ClipboardAndPrimarySelection',
         },
     },
 }
