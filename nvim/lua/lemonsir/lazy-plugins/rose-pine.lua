@@ -19,10 +19,21 @@ return {
                     TelescopeSelection = { fg = 'text', bg = 'none' },
                     TelescopeSelectionCaret = { fg = 'rose', bg = 'none' },
                     NormalNC = { fg = 'subtle', bg = 'none' },
+                    Whitespace = { fg = 'highlight_low' },
+                    TrailingWhitespace = { fg = 'rose', bg = 'rose' }
                 }
             })
             vim.cmd('colorscheme rose-pine-moon')
-            
+
+            -- TrailingWhitespace highlight group
+            -- vim.api.nvim_create_autocmd('BufEnter', {
+            --    pattern = '*',
+            --    command = [[
+            --    syntax clear TrailingWhitespace |
+            --    syntax match TrailingWhitespace "\_s\+$"
+            --    ]]
+            --})
+
             -- transparent background
             vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
             vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })

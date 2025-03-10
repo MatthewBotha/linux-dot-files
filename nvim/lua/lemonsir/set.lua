@@ -9,6 +9,10 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
+-- whitespace listing
+vim.o.list = true
+vim.o.listchars = 'tab:» ,lead:•,trail:•'
+
 -- long undo tree
 vim.opt.undodir = os.getenv('HOME') .. '/.vim/undodir'
 
@@ -28,7 +32,7 @@ vim.opt.isfname:append('@-@')
 vim.opt.updatetime = 50
 
 -- color column 80
-vim.opt.colorcolumn = '80'
+vim.opt.colorcolumn = '160'
 
 -- vim leader mapping
 vim.g.mapleader = ' '

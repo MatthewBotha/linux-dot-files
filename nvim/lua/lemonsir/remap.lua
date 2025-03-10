@@ -21,6 +21,14 @@ vim.keymap.set('n', '<leader>Y', '\'+Y')
 -- find-replace current word
 vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
+-- keyword lookup
+vim.keymap.set('i', '<C-Space>', 'K')
+
 -- set current file to executable
 vim.keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true })
 
+-- diagnostic navigation
+vim.keymap.set('n', '<leader>d', function() vim.diagnostic.open_float(0, {scope = "line"}) end)
+
+vim.keymap.set('n', '<leader>dn', function() vim.diagnostic.goto_next() end)
+vim.keymap.set('n', '<leader>du', function() vim.diagnostic.goto_prev() end)

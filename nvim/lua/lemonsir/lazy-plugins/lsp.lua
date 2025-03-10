@@ -33,9 +33,10 @@ return {
                 'apex_ls',
                 'bashls',
                 'jdtls',
-                'tsserver', -- for JS as well
+                'ts_ls',
                 -- 'nil_ls', -- nix
                 -- 'ruby_lsp',
+                'denols',
                 'sqlls', -- sql
                 'yamlls',
             },
@@ -72,6 +73,23 @@ return {
                                 }
                             }
                         }
+                    }
+                end,
+
+                ['denols'] = function()
+                    local lspconfig = require('lspconfig')
+                    lspconfig.denols.setup {
+                        on_attach = on_attach,
+                        root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+                    }
+                end,
+
+                ['ts_ls'] = function()
+                    local lspconfig = require('lspconfig')
+                    lspconfig.ts_ls.setup {
+                        on_attach = on_attach,
+                        root_dir = lspconfig.util.root_pattern("package.json"),
+                        single_file_support = false,
                     }
                 end,
             },
@@ -116,4 +134,10 @@ return {
         })
 
     end,
+
+    opts = {
+        servers ={
+            dartls = {},
+        },
+    },
 }
