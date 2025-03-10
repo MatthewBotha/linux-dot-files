@@ -66,14 +66,50 @@ config.window_padding = {
 }
 
 -- maximize on startup
-wezterm.on('gui-startup', function()
-    local tab, pane, window = mux.spawn_window{}
+wezterm.on('gui-startup', function(cmd)
+    local args = {}
+    if cmd then
+        args = cmd.args
+    end
+
+    -- -- shirley workspace
+    -- local shirley_dir = wezterm.home_dir .. '/git-repos/shirley-tlo-sf'
+    -- local git_tab, shirley_nvim_pane, shirley_window = mux.spawn_window {
+    --     workspace = 'shirley',
+    --     cwd = shirley_dir,
+    --     args = { 'lazygit' },
+    -- }
+
+    -- local shirley_tab = shirley_window:spawn_tab {
+    --     cwd = shirley_dir,
+    --     args = { 'nvim', '.' },
+    -- }
+    -- shirley_tab:set_title 'shirley'
+
+    -- local zsh_tab = shirley_window:spawn_tab {
+    --     cwd = shirley_dir,
+    -- }
+
+    -- default workspace
+    local tab, pane, window = mux.spawn_window {
+        cwd = wezterm.home_dir,
+        workspace = 'default',
+        args = args
+    }
+
     window:gui_window():maximize()
 end)
 
 -- keybindings
 config.leader = { key = '\\', mods = 'CTRL', timeout_milliseconds = 1000 }
 config.keys = {
+    -- debug
+    {
+        key = 'l',
+        mods = 'CTRL',
+        action = act.ShowDebugOverlay,
+    },
+
     -- split
     {
         mods = 'LEADER',
@@ -143,6 +179,88 @@ config.keys = {
             end),
         },
     },
+
+    -- close current tab
+    {
+        key = 'q',
+        mods = 'LEADER',
+        action = wezterm.action.CloseCurrentTab { confirm = true },
+    },
+
+    -- open new git repo as workspace
+    {
+        key = 'g',
+        mods = 'LEADER',
+        action = act.InputSelector {
+            title = 'Select a Git repo',
+            choices = (function()
+                local choices = {}
+                for _, v in ipairs(wezterm.read_dir '/home/lemonsir/git-repos') do
+                    table.insert(choices, { label = v:match(".*[\\/](.*)"), id = v })
+                end
+                return choices
+            end)(),
+            action = wezterm.action_callback(function(window, pane, line)
+                -- line will be `nil` if they hit escape without entering anything
+                -- An empty string if they just hit enter
+                -- Or the actual line of text they wrote
+                if line then
+                    local dir_name = line:match(".*[\\/](.*)")
+                    window:perform_action(
+                        act.SwitchToWorkspace {
+                            name = dir_name,
+                            spawn = {
+                                cwd = line,
+                                args = { "/home/lemonsir/.config/wez-setup.sh", line },
+                            }
+                        },
+                        pane
+                    )
+                end
+            end),
+            fuzzy = true,
+        },
+    },
+
+    -- default workspace
+    {
+        key = 'x',
+        mods = 'LEADER',
+        action = act.SwitchToWorkspace {
+            name = 'default',
+            cwd = wezterm.home_dir,
+        },
+    },
+
+    -- select workspace
+    {
+        key = 's',
+        mods = 'LEADER',
+        action = act.ShowLauncherArgs {
+            flags = 'FUZZY|WORKSPACES',
+        },
+    },
+
+    -- -- shirley workspace
+    -- {
+    --     key = 's',
+    --     mods = 'LEADER',
+    --     action = act.SwitchToWorkspace { name = 'shirley' },
+    --     --[[ action = act.Multiple {
+    --         act.SwitchToWorkspace {
+    --             name = 'shirley',
+    --             spawn = {
+    --                 args = { 'nvim', '.' },
+    --                 cwd = '~/git-repos/shirley-tlo-sf',
+    --             },
+    --         },
+    --         act.SplitVertical {
+    --             domain = 'CurrentPaneDomain',
+    --             args = { 'lazygit' },
+    --         },
+    --         act.SplitHorizontal { domain = 'CurrentPaneDomain' },
+    --     },]]
+    -- },
 
     -- unicode selector
     {
