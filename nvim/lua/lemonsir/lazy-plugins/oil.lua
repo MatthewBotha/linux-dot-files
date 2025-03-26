@@ -6,7 +6,11 @@ return {
             require('oil').setup {
                 columns = { 'icon' },
                 keymaps = {
-                    ['<C-p>'] = false,
+                    -- remove some defaults
+                    ['<C-p>'] = false, -- "actions.preview",
+                    ['<C-h>'] = false, -- { "actions.select", opts = { horizontal = true } },
+
+                    -- custom keymaps
                     ['<CM-p>'] = 'action.preview',
                     -- ['<leader>lg'] = '<cmd>LazyGit<cr>',
                 },
@@ -19,10 +23,10 @@ return {
             }
 
             -- Open parent directory in current window
-            vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+            vim.keymap.set('n', '<leader>-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
             -- open parent directoy in floating window
-            vim.keymap.set('n', '<leader>-', require('oil').toggle_float)
+            vim.keymap.set('n', '-', require('oil').toggle_float)
         end,
     },
 }
