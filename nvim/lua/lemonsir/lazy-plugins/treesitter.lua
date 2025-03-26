@@ -15,7 +15,21 @@ return {
     -- cmd = { 'TSUpdateSync', 'TSUpdate', 'TSInstall', },
     opts = {
         -- A list of parser names, or 'all' (the five listed parsers should always be installed)
-        ensure_installed = { 'bash', 'javascript', 'typescript', 'html', 'apex', 'c', 'lua', 'vim', 'vimdoc', 'query', 'yaml', 'deno', },
+        ensure_installed = {
+            'bash',
+            'javascript',
+            'typescript',
+            'html',
+            'apex',
+            'c',
+            'lua',
+            'vim',
+            'vimdoc',
+            'query',
+            'yaml',
+            'deno',
+            'query',
+        },
 
         -- Install parsers synchronously (only applied to `ensure_installed`)
         sync_install = false,
@@ -38,7 +52,6 @@ return {
     },
     config = function()
         require('nvim-treesitter').setup { highlight = { enable = true} }
-        print('testing')
         -- register extensions
         vim.treesitter.language.register('bash', {'config'})
         vim.filetype = on

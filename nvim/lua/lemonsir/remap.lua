@@ -1,5 +1,5 @@
--- jump to current dir listing
-vim.keymap.set('n', '<leader>pv', ':Ex<CR>')
+-- jump to current dir listing **Redundant with oil**
+-- vim.keymap.set('n', '<leader>pv', ':Ex<CR>')
 
 -- move highlighted lines
 vim.keymap.set('v', '<M-j>', ':m \'>+1<CR>gv=gv')
@@ -26,6 +26,12 @@ vim.keymap.set('i', '<C-Space>', 'K')
 
 -- set current file to executable
 vim.keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true })
+
+-- jester navigation
+vim.keymap.set('n', '<leader>rt', function() require("jester").run() end) -- run test under cursor
+vim.keymap.set('n', '<leader>rf', function() require("jester").run_file() end) -- run current file
+vim.keymap.set('n', '<leader>dt', function() require("jester").debug() end) -- debug test under cursor
+vim.keymap.set('n', '<leader>df', function() require("jester").debug_file() end) -- debug current file
 
 -- diagnostic navigation
 vim.keymap.set('n', '<leader>d', function() vim.diagnostic.open_float(0, {scope = "line"}) end)
