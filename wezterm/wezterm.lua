@@ -3,6 +3,7 @@ local wezterm = require 'wezterm'
 local config = {}
 local act = wezterm.action
 local mux = wezterm.mux
+-- config.exit_behavior = 'Hold'
 
 -- color scheme
 -- config.color_scheme = 'Catppuccin Mocha'
@@ -232,6 +233,20 @@ config.keys = {
         },
     },
 
+    -- vpn workspace
+    {
+        key = 'v',
+        mods = 'LEADER',
+        action = act.SwitchToWorkspace {
+            name = 'vpn',
+            spawn = {
+                cwd = wezterm.home_dir,
+                args = {
+                    'sudo', 'gpclient', 'connect', 'gpvpn.mit.edu', '-g', 'US East'
+                },
+            }
+        },
+    },
     -- select workspace
     {
         key = 's',
